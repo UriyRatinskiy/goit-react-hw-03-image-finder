@@ -8,9 +8,7 @@ export const ImageGalleryItem = ({ image, onImageClick }) => {
       className={css.galleryItemImage}
       src={image.webformatURL}
       alt={'Tags: ' + image.tags}
-      onClick={() => {
-        onImageClick(image);
-      }}
+      onClick={() => { onImageClick(image); }}
     />
   );
 };

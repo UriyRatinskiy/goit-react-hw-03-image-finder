@@ -11,13 +11,13 @@ export class Modal extends React.Component {
     window.removeEventListener('keydown', this.onKeyDown);
   }
 
-  onKeyDown = e => {
+  onKeyDown = (e) => {
     if (e.code === 'Escape') {
       this.props.onModalClose();
     }
   };
 
-  onBackdropClick = e => {
+  onBackdropClick = (e) => {
     if (e.target === e.currentTarget) {
       this.props.onModalClose();
     }
@@ -28,13 +28,7 @@ export class Modal extends React.Component {
     return (
       <div className={css.overlay} onClick={this.onBackdropClick}>
         <div className={css.modal}>
-          <button
-            className={css.closeButton}
-            type="button"
-            onClick={() => {
-              onModalClose();
-            }}
-          ></button>
+          <button className={css.closeButton} type='button' onClick={() => { onModalClose() }}></button>
           <img src={image.largeImageURL} alt={'Tags: ' + image.tags} />
         </div>
       </div>

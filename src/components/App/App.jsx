@@ -16,7 +16,6 @@ export class App extends React.Component {
     page: 1,
     perPage: 12,
     images: [],
-    
     currentImage: {},
     showMoreButton: false,
     showLoader: false,
@@ -45,28 +44,29 @@ export class App extends React.Component {
       }
 
       const showMoreButton = page < Math.ceil(total / perPage);
-      this.setState({
-        images: [...this.state.images, ...images],
-        showMoreButton,
-      });
-    } catch (error) {
+      this.setState({ images: [...this.state.images, ...images], showMoreButton });
+    }
+    
+    catch (error) {
       toast.error('An error has occurred');
-    } finally {
+    }
+    
+    finally {
       this.setState({ showLoader: false });
     }
   };
 
-  handleFormSubmit = query => {
+  handleFormSubmit = (query) => {
     if (query !== this.state.query) {
       this.setState({ query, images: [], page: 1 });
     }
   };
 
   handleMoreButtonClick = () => {
-    this.setState(prevState => ({ page: prevState.page + 1 }));
+    this.setState((prevState) => ({ page: prevState.page + 1 }));
   };
 
-  handleModalOpen = currentImage => {
+  handleModalOpen = (currentImage) => {
     this.setState({ showModal: true, currentImage });
   };
 
@@ -75,14 +75,8 @@ export class App extends React.Component {
   };
 
   render() {
-    const { images, currentImage, showMoreButton, showModal, showLoader } =
-      this.state;
-    const {
-      handleFormSubmit,
-      handleMoreButtonClick,
-      handleModalOpen,
-      handleModalClose,
-    } = this;
+    const { images, currentImage, showMoreButton, showModal, showLoader } = this.state;
+    const { handleFormSubmit, handleMoreButtonClick, handleModalOpen, handleModalClose } = this;
 
     return (
       <div className={css.app}>
@@ -91,18 +85,9 @@ export class App extends React.Component {
 
         {showMoreButton && <Button onClick={handleMoreButtonClick} />}
         {showLoader && <Loader />}
-        {showModal && (
-          <Modal image={currentImage} onModalClose={handleModalClose} />
-        )}
+        {showModal && <Modal image={currentImage} onModalClose={handleModalClose} />}
 
-        <ToastContainer
-          transition={Slide}
-          theme="colored"
-          autoClose={2500}
-          closeOnClick
-          pauseOnHover={false}
-          pauseOnFocusLoss
-        />
+        <ToastContainer transition={Slide} theme='colored' autoClose={2500} closeOnClick pauseOnHover={false} pauseOnFocusLoss />
       </div>
     );
   }

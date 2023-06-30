@@ -6,13 +6,15 @@ import css from './ImageGallery.module.css';
 export const ImageGallery = ({ images, ...restProps }) => {
   return (
     <ul className={css.imageGallery}>
-      {images.map(image => {
+
+      {images.map((image) => {
         return (
           <li className={css.imageGalleryItem} key={image.id}>
             <ImageGalleryItem image={image} {...restProps} />
           </li>
         );
       })}
+
     </ul>
   );
 };
