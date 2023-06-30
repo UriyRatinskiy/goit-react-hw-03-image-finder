@@ -16,6 +16,7 @@ export class App extends React.Component {
     page: 1,
     perPage: 12,
     images: [],
+    
     currentImage: {},
     showMoreButton: false,
     showLoader: false,
