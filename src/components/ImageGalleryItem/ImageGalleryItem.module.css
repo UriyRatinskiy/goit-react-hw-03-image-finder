@@ -7,5 +7,6 @@
 
 .galleryItemImage:hover {
   transform: scale(1.03);
-  cursor: url('../../icons/zoom.png') 12 12, zoom-in;
+ 
 }
+ 
