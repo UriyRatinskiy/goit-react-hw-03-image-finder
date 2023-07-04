@@ -10,9 +10,13 @@ export class Modal extends React.Component {
   componentWillUnmount() {
     window.removeEventListener('keydown', this.onKeyDown);
   }
+  onKeyDown = e => {
+    if (e.code === 'Escape') {
+      this.props.onModalClose();
+    }
+  };
 
-
-  onBackdropClick = (e) => {
+  onBackdropClick = e => {
     if (e.target === e.currentTarget) {
       this.props.onModalClose();
     }
